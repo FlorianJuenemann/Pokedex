@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,16 +8,39 @@
     <title>Document</title>
 
     <script>
-        async function loadPokemon(){
+        let currentPokemon;
+
+        async function loadPokemon() {
             let url = 'https://pokeapi.co/api/v2/pokemon/bulbasaur';
             let response = await fetch(url);
-            let responseAsJson = await response.json();
+            currentPokemon = await response.json();
+            console.log('Loaded pokemon', currentPokemon);
 
-            console.log('Loaded pokemon', responseAsJson);
+            renderPokemonInfo();
         };
+
+        function renderPokemonInfo(){
+            document.getElementById('pokemonName').innerHTML = currentPokemon['name'];
+        }
+
+
     </script>
+    <style>
+        #Pokedex {
+            min-height: 50vh;
+            background-color: rgb(216, 36, 36);
+            color: white;
+        }
+    </style>
+
 </head>
+
 <body onload="loadPokemon()">
-    
+
+    <div id="Pokedex">
+        <h1 id="pokemonName">Name</h1>
+    </div>
+
 </body>
+
 </html>

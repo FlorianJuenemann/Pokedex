@@ -19,17 +19,33 @@
             renderPokemonInfo();
         };
 
-        function renderPokemonInfo(){
+        function renderPokemonInfo() {
             document.getElementById('pokemonName').innerHTML = currentPokemon['name'];
+            document.getElementById('pokemonImage').src = currentPokemon['sprites']['front_shiny'];
         }
 
 
     </script>
     <style>
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
         #Pokedex {
             min-height: 50vh;
             background-color: rgb(216, 36, 36);
             color: white;
+            display: flex;
+            
+        }
+
+        .InfoContainer{
+            background-color: white;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            height:100px;
+            margin-top: -20px;
         }
     </style>
 
@@ -39,6 +55,9 @@
 
     <div id="Pokedex">
         <h1 id="pokemonName">Name</h1>
+    </div>
+    <div class="InfoContainer">
+        <img id="pokemonImage">
     </div>
 
 </body>
